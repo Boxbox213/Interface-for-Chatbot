@@ -19,7 +19,7 @@ st.markdown("Ask me anything about USeP based on the Pre-Enrollment Procedure an
 with st.sidebar:
     st.header("Configuration")
     groq_api_key = st.text_input("Groq API Key", type="password")
-    groq_model = st.text_input("Groq Model ID", value="llama3-8b-8192")
+    groq_model = st.text_input("Groq Model ID", value="openai/gpt-oss-20b")
     st.markdown("Get your Groq API key from [Groq Console](https://console.groq.com/keys)")
 
 @st.cache_resource
