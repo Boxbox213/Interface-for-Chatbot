@@ -19,6 +19,7 @@ st.markdown("Ask me anything about USeP based on the Pre-Enrollment Procedure an
 with st.sidebar:
     st.header("Configuration")
     groq_api_key = st.text_input("Groq API Key", type="password")
+    groq_model = st.text_input("Groq Model ID", value="llama3-8b-8192")
     st.markdown("Get your Groq API key from [Groq Console](https://console.groq.com/keys)")
 
 @st.cache_resource
@@ -61,7 +62,7 @@ if not groq_api_key:
 # Initialize ChatGroq and chain
 try:
     llm = ChatGroq(
-        model_name="llama-3.1-8b-instant",
+        model_name=groq_model,
         temperature=0,
         groq_api_key=groq_api_key
     )
