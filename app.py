@@ -19,9 +19,15 @@ st.markdown("Ask me anything about USeP based on the Pre-Enrollment Procedure an
 # Sidebar Settings
 with st.sidebar:
     with st.expander("⚙️ Settings", expanded=True):
-        groq_api_key = st.text_input("Groq API Key", type="password")
+        # Check if API key is provided via Streamlit secrets
+        if "GROQ_API_KEY" in st.secrets:
+            groq_api_key = st.secrets["GROQ_API_KEY"]
+            st.success("API Key loaded from secure secrets!")
+        else:
+            groq_api_key = st.text_input("Groq API Key", type="password")
+            st.markdown("Get your key: [Groq Console](https://console.groq.com/keys)")
+            
         groq_model = st.text_input("Groq Model ID", value="openai/gpt-oss-20b")
-        st.markdown("Get your key: [Groq Console](https://console.groq.com/keys)")
     
     if st.button("🗑️ Clear Conversation", use_container_width=True):
         st.session_state.messages = []
